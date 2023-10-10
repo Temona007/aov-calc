@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+#aov-calculator {
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-family: 'Manrope', sans-serif;
+}
+
+#aov-calculator label {
+	color: #070d59;
+    font-family: Manrope,sans-serif;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 400;
+}
+
+#aov-calculator button {
+	display: block;
+	width: 100%;
+	background-color: transparent;
+	border: 0px solid #06f;
+	border-radius: 0;
+	font-size: 30px;
+  font-weight: 800;
+  color: #06f;
+}
+
+#aov-calculator input {
+	font-size: 32px;
+}
+
+#aov-calculator [type=number],
+#aov-calculator [type=text] {
+	border: none;
+	border-bottom: 1.5px solid #06f;
+	border-radius: 0;
+	padding-left: 0;
+}
+
+.form-control:focus {
+    border: none !important;
+	  border-bottom: 1.5px solid #3b5eb9 !important;
+    box-shadow: none !important;
+}
+
+#aov-calculator .block-inpts {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#aov-calculator .btn-res {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#block-results {
+  background-color: transparent;
+  border: 1px solid #e0bea3;
+  border-radius: 0;
+  border-radius: 20px;
+  -webkit-box-shadow: -5px 7px 30px -7px rgba(224, 190, 163,0.75);
+  -moz-box-shadow: -5px 7px 30px -7px rgba(224, 190, 163,0.75);
+  box-shadow: -5px 7px 30px -7px rgba(224, 190, 163,0.75);
+  padding: 30px 20px;
+}
+
+#aov-calculator label.btn-label {
+	background-color: #fff;
+	border: 0px solid #06f;
+	display: block;
+	padding: 0px;
+	font-size: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.totalRevenueLift,
+#totalRevenueLift {
+  font-size: 35px !important;
+/*  font-weight: 600 !important;*/
+}
+
+#creditKeyAverageLift {
+  padding-left: 0!important;
+}
+
+/* Dollar sign */
+.input-dollar {
+  position: relative;
+  color: #20222d;
+}
+.input-dollar:before {
+    position: absolute;
+    top: 0;
+    content: "$";
+    font-size: 32px;
+    font-weight: 400;
+    top: 29px; 
+    left: -466px;  
+}
+#inputDollar1:before{
+    left: -182px;
+}
+#inputDollar2:before{
+    left: -124px;
+}
+
+/* Percent Sign */
+.input-percent {
+  position: relative;
+  color: #20222d;
+}
+.input-percent:before {
+    position: absolute;
+    top: 0;
+    content: "%";
+    font-size: 32px;
+    font-weight: 400;
+    top: 29px; 
+    left: -252px;  
+}
+
+/* Placeholder */
+#aov-calculator ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #d6e0f0;
+}
+#aov-calculator ::-moz-placeholder { /* Firefox 19+ */
+  color: #d6e0f0;
+}
+#aov-calculator :-ms-input-placeholder { /* IE 10+ */
+  color: #d6e0f0;
+}
+#aov-calculator :-moz-placeholder { /* Firefox 18- */
+  color: #d6e0f0;
+}
+
+/* Remove arrows */
+#aov-calculator input::-webkit-outer-spin-button,
+#aov-calculator input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+#aov-calculator input[type=number],
+#aov-calculator input[type=text] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+/* Slider */
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 20px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #06f;
+  border-radius: 25px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0,0,0, 1);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #06f;
+}
+.range-wrap{
+  width: 100%;
+  position: relative;
+  margin-top: 29px;
+}
+.range-value{
+  position: absolute;
+  top: -50%;
+}
+.range-value span{
+  width: 72px;
+  height: 44px;
+  line-height: 43px;
+  text-align: center;
+  background: #06f;
+  color: #fff;
+  font-size: 25px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -42%);
+  border-radius: 21px;
+}
+.range-value span:before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid #06f;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -1px;
+}
+
+
+/* MEDIA QUERY */
+/* LAPTOP */
+@media (min-width: 1400px) {}
+
+/* small LAPTOP */
+@media (max-width: 1024px){
+  .input-dollar:before {
+    left: -374px;
+  }
+}
+
+/* TABLET */
+@media (max-width: 768px){
+  #aov-calculator .block-inpts {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  } 
+  #aov-calculator input {
+    font-size: 29px;
+  }
+  .input-dollar:before {
+    font-size: 29px;
+    left: -275px;  
+  }  
+  .input-percent:before {
+    font-size: 29px;
+    left: -226px;
+  }
+  #block-results {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  #totalRevenueLift {
+    font-size: 32px !important;
+  }
+  #aov-calculator button {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 29px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 475px) {
+  #inputDollar:before {
+      font-size: 29px;
+      left:  -401px;;
+  }
+  .input-percent:before {
+      left: -250px;
+  }
+  #block-results {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 12px;
+  }
+  #block-results .btn-res {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 375px) {
+  #inputDollar:before {
+      left: -349px;
+  }
+}
+
+
