@@ -3,6 +3,7 @@
 #aov-calculator {
 	padding-top: 100px;
 	padding-bottom: 100px;
+  font-family: initial;
 	font-family: 'Manrope', sans-serif;
 }
 
@@ -74,14 +75,36 @@
 	width: 100%;
 }
 
-.totalRevenueLift,
-#totalRevenueLift {
+.creditKeyDifference {
   font-size: 35px !important;
+}
+
+.totalRevenueLift,
+#totalRevenueLift,
+#creditKeyDifference {
+  font-size: 45px !important;
 /*  font-weight: 600 !important;*/
 }
 
 #creditKeyAverageLift {
   padding-left: 0!important;
+}
+
+.creditKeyDifference1 {
+  text-align: center;
+}
+.totalRevenueLift1 {
+  text-align: center;
+}
+#stripe {
+  border-right: 1px solid black;
+}
+#revenue-gain-text {
+  color: #070d59;
+  font-family: Manrope,sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
 }
 
 /* Dollar sign */
@@ -92,17 +115,23 @@
 .input-dollar:before {
     position: absolute;
     top: 0;
-    content: "$";
+    content: "\0024";
     font-size: 32px;
     font-weight: 400;
     top: 29px; 
     left: -466px;  
+    display: inline-block;
+    z-index: 999;
 }
 #inputDollar1:before{
-    left: -182px;
+    left: -317px;
+    display: inline-block;
+    z-index: 999;
 }
 #inputDollar2:before{
-    left: -124px;
+    left: -216px;
+    display: inline-block;
+    z-index: 999;
 }
 
 /* Percent Sign */
@@ -113,11 +142,16 @@
 .input-percent:before {
     position: absolute;
     top: 0;
-    content: "%";
+    content: "\0025";
     font-size: 32px;
     font-weight: 400;
     top: 29px; 
-    left: -252px;  
+    left: -322px; 
+    z-index: 999; 
+}
+#inputPercent2:before {
+  left: -404px;
+  z-index: 999;  
 }
 
 /* Placeholder */
@@ -221,8 +255,19 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 /* small LAPTOP */
 @media (max-width: 1024px){
+  .input-percent:before {
+    left: -316px;
+  }
   .input-dollar:before {
     left: -374px;
+  }
+  #inputPercent2:before {
+    left: -316px;
+  }
+  #totalRevenueLift,
+  #creditKeyDifference {
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -243,17 +288,30 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     font-size: 29px;
     left: -226px;
   }
+  #inputPercent2:before {
+    left: -224px;
+  }
   #block-results {
     padding-left: 5px;
     padding-right: 5px;
   }
-  #totalRevenueLift {
+  #totalRevenueLift,
+  #creditKeyDifference {
     font-size: 32px !important;
+  }
+  .creditKeyDifference {
+      font-size: 30px !important;
   }
   #aov-calculator button {
     padding-left: 0;
     padding-right: 0;
     font-size: 29px;
+  }
+  #revenue-gain-text {
+    display: block;
+  }
+  #inputDollar1:before {
+    left: -275px;
   }
 }
 
@@ -264,7 +322,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
       left:  -401px;;
   }
   .input-percent:before {
-      left: -250px;
+      left: -341px;
+  }
+  #inputPercent2:before {
+    left: -341px;
   }
   #block-results {
     padding-top: 10px;
@@ -275,12 +336,57 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     padding-top: 5px;
     padding-bottom: 5px;
   }
+  .totalRevenueLift1,
+  .creditKeyDifference1  {
+    text-align: center;
+  }
+  #totalRevenueLift {
+    margin-top: -25px;
+  }
+  #inputDollar1:before {
+    left: -314px;
+  }
+  #inputPercent:before {
+    left: -333px;
+  }
 }
 
 @media (max-width: 375px) {
   #inputDollar:before {
-      left: -349px;
+    margin-left: -20px;
+    left: -332px;
+  }
+  .input-percent:before {
+    left: -297px;
+  }
+  #inputPercent2:before {
+    left: -297px;
+  }
+  #inputPercent:before {
+    left: -295px;
   }
 }
+
+@media (max-width: 320px) {
+  .input-percent:before {
+    left: -242px;
+  }
+  #inputPercent2:before {
+    left: -242px;
+  }
+  #inputDollar:before {
+    left: -278px;
+  }
+  #block-results > div:nth-child(1) > label {
+    font-size: 29px !important;
+  }
+  #inputPercent:before {
+    left: -241px;
+  }
+  #inputDollar1:before {
+    left: -295px;
+  }
+}
+
 
 
