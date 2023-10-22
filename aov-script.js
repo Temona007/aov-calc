@@ -16,38 +16,37 @@ const counterAnim = (qSelector, start = 0, end, duration = 1000, prefix) => {
 };
 
 function expectedCreditKey() {
+
+	console.log('');
 	// let addresableRevenue    = document.getElementById('addresableRevenue').value * 1;
-	let addresableRevenueText   = document.getElementById('addresableRevenue').value;
-	let addresableRevenueCommas = addresableRevenueText.split(',').join('');
-	let addresableRevenue       = addresableRevenueCommas * 1;
+	// let addresableRevenueText   = document.getElementById('addresableRevenue').value;
+	// let addresableRevenueCommas = addresableRevenueText.split(',').join('');
+	// let addresableRevenue       = addresableRevenueCommas * 1;
 
 	
 	// let averOrderValue = document.getElementById('averOrderValue').value * 1;
-	let averOrderValueText   = document.getElementById('averOrderValue').value;
-	let averOrderValueCommas = averOrderValueText.split(',').join('');
-	let averOrderValue       = averOrderValueCommas * 1;
+	// let averOrderValueText   = document.getElementById('averOrderValue').value;
+	// let averOrderValueCommas = averOrderValueText.split(',').join('');
+	// let averOrderValue       = averOrderValueCommas * 1;
 
 
-	let expectedCreditKeyOrderVolume;
-	expectedCreditKeyOrderVolume = addresableRevenue / averOrderValue;
+	// let expectedCreditKeyOrderVolume;
+	// expectedCreditKeyOrderVolume = addresableRevenue / averOrderValue;
 
-	// All field must be filled
-	if (addresableRevenue > 0.001 && averOrderValue > 0.001) {
-		// Results
-		document.getElementById('expectedCreditKeyOrderVolume').innerHTML  = Math.round(expectedCreditKeyOrderVolume).toLocaleString("en-US").toString(2);
-		// Animation
-		counterAnim("#expectedCreditKeyOrderVolume", 0, expectedCreditKeyOrderVolume, 1000, " ");
-	}
+	// // All field must be filled
+	// if (addresableRevenue > 0.001 && averOrderValue > 0.001) {
+	// 	// Results
+	// 	document.getElementById('expectedCreditKeyOrderVolume').innerHTML  = Math.round(expectedCreditKeyOrderVolume).toLocaleString("en-US").toString(2);
+	// 	// Animation
+	// 	counterAnim("#expectedCreditKeyOrderVolume", 0, expectedCreditKeyOrderVolume, 1000, " ");
+	// }
 	
 }
 
 function AovCalc() {
 
 	// Input values:
-	// let addresableRevenue    = document.getElementById('addresableRevenue').value * 1;
-	let addresableRevenueText   = document.getElementById('addresableRevenue').value;
-	let addresableRevenueCommas = addresableRevenueText.split(',').join('');
-	let addresableRevenue       = addresableRevenueCommas * 1;
+	
 	// let averOrderValue = document.getElementById('averOrderValue').value * 1;
 	let averOrderValueText      = document.getElementById('averOrderValue').value;
 	let averOrderValueCommas    = averOrderValueText.split(',').join('');
@@ -55,34 +54,56 @@ function AovCalc() {
 	let creditKeyTakeRate       = document.getElementById('range').value / 100;
 	let creditKeyAverageLift    = document.getElementById('creditKeyAverageLift').value / 100;
 
+	// console.log(creditKeyAverageLift);
+	// if (creditKeyAverageLift < 1 ) {
+	// 	creditKeyAverageLift = 1 + creditKeyAverageLift;
+	// }
+	// console.log(creditKeyAverageLift);
+
 	// let totalRevenue         = document.getElementById('totalRevenue').value * 1;
 	let totalRevenueText   = document.getElementById('totalRevenue').value;
 	let totalRevenueCommas = totalRevenueText.split(',').join('');
 	let totalRevenue       = totalRevenueCommas * 1;
 
+	// let addresableRevenue    = document.getElementById('addresableRevenue').value * 1;
+	let addresableRevenueText   = document.getElementById('addresableRevenue').value;
+	let addresableRevenueCommas = addresableRevenueText.split(',').join('');
+	let addresableRevenue       = totalRevenue * (addresableRevenueCommas * 1) / 100 ;
+	console.log(addresableRevenue);
+
 	let expectedCreditKeyOrderVolume;
 	let totalRevenueCreditKey;
 	let creditKeyDifference;
+	let totalRevenueLiftPerc;
 	let totalRevenueLift;
+	let companyRevenueInDollar;
 
 	// Calculations
-		creditKeyTakeRate 			     = creditKeyTakeRate.toFixed(2);
+	//creditKeyTakeRate 			     = creditKeyTakeRate.toFixed(2);
 		expectedCreditKeyOrderVolume = addresableRevenue / averOrderValue;
-		totalRevenueCreditKey 		   = totalRevenue - addresableRevenue + (averOrderValue * expectedCreditKeyOrderVolume) - (averOrderValue * expectedCreditKeyOrderVolume * creditKeyTakeRate) + (averOrderValue * expectedCreditKeyOrderVolume * creditKeyTakeRate * creditKeyAverageLift);
+// According to Google Sheet:
+ // totalRevenueCreditKey 		   = totalRevenue - addresableRevenue + (averOrderValue * expectedCreditKeyOrderVolume) - (averOrderValue * expectedCreditKeyOrderVolume * creditKeyTakeRate) + (averOrderValue * expectedCreditKeyOrderVolume * creditKeyTakeRate * creditKeyAverageLift);
+		totalRevenueCreditKey				 = totalRevenue + (addresableRevenue * creditKeyTakeRate * creditKeyAverageLift);
 		creditKeyDifference 		     = totalRevenueCreditKey - totalRevenue;
-		totalRevenueLift			       = (totalRevenueCreditKey / totalRevenue - 1) * 100;
-		totalRevenueLift 						 = totalRevenueLift.toFixed(2)
+		totalRevenueLiftPerc			   = (totalRevenueCreditKey / totalRevenue - 1) * 100;
+		totalRevenueLiftPerc 				 = totalRevenueLiftPerc.toFixed(2);
+		totalRevenueLift 						 = totalRevenueCreditKey - totalRevenue;
+		companyRevenueInDollar       = addresableRevenue;
 
-	if (addresableRevenue > 0.001 && averOrderValue > 0.001 && creditKeyTakeRate > 0.001 && creditKeyAverageLift > 0.001 && totalRevenue > 0.001) {
+	if (addresableRevenue > 0.001 && averOrderValue > 0.001 && creditKeyAverageLift > 0.001 && totalRevenue > 0.001) {
 		// Results
 		document.getElementById('totalRevenueCreditKey').innerHTML  = "$" + Math.round(totalRevenueCreditKey).toLocaleString("en-US").toString(2);
 		document.getElementById('creditKeyDifference').innerHTML    = "$" + Math.round(creditKeyDifference).toLocaleString("en-US").toString(2);
-		document.getElementById('totalRevenueLift').innerHTML       = totalRevenueLift.toLocaleString("en-US") + " %";	
+		document.getElementById('totalRevenueLift').innerHTML       = "+" + totalRevenueLiftPerc.toLocaleString("en-US") + " %";	// " % <span id='revenue-gain-text'>revenue gain</span>";
+		document.getElementById('existingTotalRevenue').innerHTML   = "$" + totalRevenue.toLocaleString("en-US");	
+		document.getElementById('companyRevenueInDollar').innerHTML = "$" + companyRevenueInDollar.toLocaleString("en-US");
 
 		// Animation
-		counterAnim("#totalRevenueCreditKey", 0, totalRevenueCreditKey, 1000, "$");
-		counterAnim("#creditKeyDifference",   0, creditKeyDifference, 1000, "$");
-		//counterAnim("#totalRevenueLift",    0, totalRevenueLift, 1000, " %");
+		counterAnim("#totalRevenueCreditKey",  0, totalRevenueCreditKey, 1000, "$");
+		counterAnim("#creditKeyDifference",    0, creditKeyDifference, 1000, "$");
+		counterAnim("#existingTotalRevenue",   0, totalRevenue, 1000, "$");
+		counterAnim("#companyRevenueInDollar", 0, companyRevenueInDollar, 1000, "$");
+		// counterAnim("#totalRevenueLift",    0, totalRevenueLift, 1000, " %");
 	}
 }
 
@@ -102,10 +123,10 @@ function addDollarSign2() {
 	inputDollar.className += " input-dollar";
 	document.getElementById("totalRevenue").style.paddingLeft = '25px';
 }
-function addPercentSign() {
-	let inputPercent = document.getElementById("inputPercent");
-	inputPercent.className += " input-percent";
-}
+// function addPercentSign() {
+// 	let inputPercent = document.getElementById("inputPercent");
+// 	inputPercent.className += " input-percent";
+// }
 
 // Limitation to input by characters
 function enforceMaxLength(element, maxLength) {
