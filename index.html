@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AOV calculator</title>
 
@@ -24,38 +25,38 @@
             <div class="row">
               <div class="col-md-5">
                 <div class="block-inpts">
-                  <label for="addresableRevenue">Revenue from Small and Medium-Sized Businesses</label>
-                  <span class="first-dollar" id="inputDollar">
-                    <input id="addresableRevenue" oninput="AovCalc(); expectedCreditKey(); addDollarSign();" type="text" 
+                  <label for="packagePlan">Total company revenue</label>
+                  <span class="" id="inputDollar2">
+                    <input id="totalRevenue" oninput="AovCalc(); addDollarSign2();" type="text" class="form-control number-separator" placeholder="Enter a number">
+                  </span>
+                </div>
+                <div class="block-inpts">
+                  <label for="addresableRevenue">Revenue from small and medium-sized businesses</label>
+                  <span class="input-percent" id="inputPercent2">
+                    <input id="addresableRevenue" oninput="AovCalc(); expectedCreditKey(); enforceMaxLength(this, 3);" type="text" 
                             class="form-control number-separator" 
-                            placeholder="Enter a number"
-                            value="" 
+                            placeholder="%"
+                            value="50" 
                     >
                   </span>
                 </div>
                 <div class="block-inpts">
-                  <label for="averOrderValue">Average order value</label>
+                  <label for="averOrderValue">Current average order value (AOV)</label>
                   <span class="" id="inputDollar1">
                     <input id="averOrderValue" oninput="AovCalc(); expectedCreditKey(); addDollarSign1();" type="text" class="form-control number-separator" placeholder="Enter a number">
                   </span>
                 </div>
                 <div class="block-inpts">
-                  <label for="range" class="form-label">Adoption rate %</label>
+                  <label for="range" class="form-label">Adoption rate (% of customers who will use Credit Key)</label>
                   <div class="range-wrap">
                     <div class="range-value" id="rangeV"></div>
                     <input id="range" oninput="AovCalc();" type="range" min="0" max="100" step="0.1" value="3.6" >
                   </div>
                 </div>
                 <div class="block-inpts">
-                  <label for="creditKeyAverageLift">Credit Key average order value lift</label>
-                  <span class="" id="inputPercent">
-                    <input id="creditKeyAverageLift" oninput="AovCalc(); addPercentSign(); enforceMaxLength(this, 3);" type="number" class="form-control" placeholder="%">
-                  </span>
-                </div>
-                <div class="block-inpts">
-                  <label for="packagePlan">Total revenue</label>
-                  <span class="" id="inputDollar2">
-                    <input id="totalRevenue" oninput="AovCalc(); addDollarSign2();" type="text" class="form-control number-separator" placeholder="Enter a number">
+                  <label for="creditKeyAverageLift">Credit Key lift in AOV (average lift is 256%)</label>
+                  <span class="input-percent" id="inputPercent">
+                    <input id="creditKeyAverageLift" oninput="AovCalc(); enforceMaxLength(this, 3);" type="number" class="form-control" placeholder="%" value="256">
                   </span>
                 </div>
               </div>
@@ -63,12 +64,46 @@
               <div class="col-md-7 my-auto">
                 <div id="block-results">
                   <div class="btn-res">
-                    <label for="totalRevenueLift" class="btn-label totalRevenueLift">Total Revenue Lift</label>
-                    <button id="totalRevenueLift" class="btn btn-lg btn-primary">0%</button>
+                    <label for="creditKeyDifference" class="btn-label creditKeyDifference">Total revenue lift from Credit Key</label>
+                    
                   </div>
-                   
-                   <div class="row">
-                      <div class="col-lg-6 col-md-6">
+                  
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 d-none">
+                      <div class="btn-res">
+                        <label  for="companyRevenueInDollar" class="btn-label">Revenue from businesses in dollars</label>
+                        <button id="companyRevenueInDollar" class="btn btn-lg btn-primary">$0</button>
+                      </div>
+                    </div>
+
+                    <div class="col" id="stripe">
+                      <div class="btn-res">
+                        <button id="creditKeyDifference" class="btn btn-lg btn-primary creditKeyDifference1">$0</button>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="btn-res">
+                        <!-- <label for="totalRevenueLift" class="btn-label">Revenue gain</label> -->
+                        <button id="totalRevenueLift" class="btn btn-lg btn-primary totalRevenueLift1">+0%</button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row d-none">
+                    <div class="col-lg-6 col-md-6">
+                      <div class="btn-res">
+                        <label  for="existingTotalRevenue" class="btn-label">Current company revenue</label>
+                        <button id="existingTotalRevenue" class="btn btn-lg btn-primary">$0</button>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                      <div class="btn-res">
+                       <label for="totalRevenueCreditKey" class="btn-label">Revenue potential with Credit Key</label>
+                       <button id="totalRevenueCreditKey" class="btn btn-lg btn-primary">$0</button>
+                      </div>
+                    </div>
+
+                      <!-- <div class="col-lg-6 col-md-6">
                         <div class="btn-res">
                           <label  for="expectedCreditKeyOrderVolume" class="btn-label">Expected Credit Key order volume</label>
                           <button id="expectedCreditKeyOrderVolume" class="btn btn-lg btn-primary">0 QTY</button>
@@ -84,8 +119,9 @@
                         <div class="btn-res">
                           <label for="creditKeyDifference" class="btn-label">The Credit Key difference</label>
                           <button id="creditKeyDifference" class="btn btn-lg btn-primary">$0</button>
-                        </div>
-                      </div>
+                        </div> 
+                      </div> -->
+
                     </div>
                   </div>
                 </div>
