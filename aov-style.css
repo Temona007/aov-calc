@@ -313,6 +313,16 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   #inputDollar1:before {
     left: -275px;
   }
+/* .......... */
+input-percent:before {
+    left: -327px;
+}
+#inputDollar1:before {
+    left: -314px;
+}
+#inputPercent2:before {
+    left: -408px;
+}
 }
 
 /* MOBILE */
@@ -347,6 +357,13 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   #inputPercent:before {
     left: -333px;
   }
+	/* .......... */
+#inputPercent2:before {
+    left: -329px;
+}
+#inputPercent:before {
+    left: -328px;
+}
 }
 
 @media (max-width: 375px) {
