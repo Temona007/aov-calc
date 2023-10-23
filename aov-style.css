@@ -378,10 +378,10 @@ input-percent:before {
     left: -297px;
   }
   #inputPercent2:before {
-    left: -297px;
+      left: -279px;
   }
   #inputPercent:before {
-    left: -295px;
+    left: -279px;
   }
 }
 
