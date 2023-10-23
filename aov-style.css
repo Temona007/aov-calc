@@ -390,7 +390,7 @@ input-percent:before {
     left: -242px;
   }
   #inputPercent2:before {
-    left: -242px;
+    left: -220px;
   }
   #inputDollar:before {
     left: -278px;
@@ -399,10 +399,10 @@ input-percent:before {
     font-size: 29px !important;
   }
   #inputPercent:before {
-    left: -241px;
+    left: -224px;
   }
   #inputDollar1:before {
-    left: -295px;
+    left: -276px;
   }
 }
 
