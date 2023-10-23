@@ -323,6 +323,9 @@ input-percent:before {
 #inputPercent2:before {
     left: -408px;
 }
+#inputPercent:before {
+    left: -316px;
+}
 }
 
 /* MOBILE */
