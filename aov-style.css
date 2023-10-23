@@ -340,9 +340,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   .creditKeyDifference1  {
     text-align: center;
   }
-  #totalRevenueLift {
-    margin-top: -25px;
-  }
+  #totalRevenueLift {}
   #inputDollar1:before {
     left: -314px;
   }
